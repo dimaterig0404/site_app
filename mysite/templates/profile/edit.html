@@ -1,0 +1,119 @@
+{% extends "./base_edit.html" %}
+{% load static %}
+
+
+
+
+{% block afiches %}
+
+
+
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <h6 class="mb-0">Имя:</h6>
+    </div>
+    <div class="col-sm-9 text-secondary">
+        <input id='name' type="text" class="form-control" value="{{ uaser.login }}">
+    </div>
+</div>
+
+
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <h6 class="mb-0">Статус: </h6>
+    </div>
+    <div class="col-sm-9 text-secondary">
+        {% if uaser.sopose == "Qr"%}
+
+        <h6 class="mb-0" style="color: lime">Qr код подкреплен </h6>
+
+
+        {% elif uaser.sopose == "18" %}
+
+        <select id="status" class="select-css" value="0" onchange="status()">
+            <option value="0">У меня есть QR-код о вакцинации</option>
+            <option value="1">У меня мед отвод</option>
+            <option selected value="2">Мне еще не испольнилось 18 лет</option>
+        </select>
+        {% elif uaser.sopose == "med" %}
+
+        <select id="status" class="select-css" value="0" onchange="status()">
+            <option value="0">У меня есть QR-код о вакцинации</option>
+            <option selected value="1">У меня мед отвод</option>
+            <option value="2">Мне еще не испольнилось 18 лет</option>
+        </select>
+        {% else %}
+
+        <select id="status" class="select-css" value="0" onchange="status()">
+            <option value="0">У меня есть QR-код о вакцинации</option>
+            <option value="1">У меня мед отвод</option>
+            <option value="2">Мне еще не испольнилось 18 лет</option>
+        </select>
+
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <h6 class="mb-0">Email address</h6>
+    </div>
+    <div class="col-sm-9 text-secondary">
+        <input id='email' type="text" class="form-control" value="{{ uaser.email }}">
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <h6 class="mb-0">Пароль:</h6>
+    </div>
+    <div class="col-sm-9 text-secondary">
+        <input id='pass' type="text" class="form-control" value="">
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <h6 class="mb-0">Тип аккаунта: </h6>
+    </div>
+    <div class="col-sm-9 text-secondary">
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+            {% if not ii.isCode_num %}
+            {% if isMine %}
+            <select id="tip" class="select-css" onchange="tipe()">
+                <option value="0">Phone id</option>
+                <option value="1">Face Id</option>
+            </select>
+            {% endif %}
+            {% else %}
+
+            {% if isMine %}
+            <select id="tip" class="select-css" onchange="tipe()">
+                <option value="0">Phone id</option>
+                <option selected value="1">Face Id</option>
+            </select>
+            {% endif %}
+            {% endif %}
+            {% endblock %}
+
+
+
+            {% block smile %}
+            {% if uaser.sopose == "med" %}😎
+            {% elif uaser.sopose == "18" %}🔞
+            {% elif uaser.sopose == "Qr" %}✅
+            {% else %}❌
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

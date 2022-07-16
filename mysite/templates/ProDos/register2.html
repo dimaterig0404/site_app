@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ProДосуг - Вход</title>
+    <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/nouislider/nouislider.min.css'%}"
+    />
+    <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/bootstrap/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/fontawesome/css/all.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/themify-icons/themify-icons.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/nice-select/nice-select.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+      <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand logo_h" href="../"
+              ><img src="{% static 'img/logo.png'%}" alt=""
+            /></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse offset"
+              id="navbarSupportedContent"
+            >
+              <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="../">Главная</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="../merop">Все мероприятия</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="../users">Пользователи</a></li>
+                <li class="nav-item active submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Профиль</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="../login">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../reg">Регистрация</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+    <!-- ================ start banner area ================= -->
+    <section class="blog-banner-area" id="category">
+      <div class="container h-100">
+        <div class="blog-banner">
+          <div class="text-center">
+            <h1>Регистрация аккаунта</h1>
+            <nav aria-label="breadcrumb" class="banner-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Регистрация аккаунта
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ end banner area ================= -->
+    <!--================Login Box Area =================-->
+    <section class="login_box_area section-margin">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="login_form_inner register_form_inner">
+              <h3>ЗАВЕСТИ АККАУНТ</h3>
+              <form method="post" enctype="multipart/form-data" class="row login_form" action="#/" id="register_form">
+                {% csrf_token %}
+                {%if category == "2"%}
+                <div class="col-md-12 form-group">
+                  <a>
+                    Загрузите фотографию вашего лица
+                  </a>
+                </div>
+                
+                <div class="col-md-12 form-group">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="face"
+                    name="face"
+                    accept="image/png, image/gif, image/jpeg"
+                    placeholder="Имя пользователя"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Имя пользователя'"
+                  />
+                </div>
+                  {%endif%}
+                <div class="col-md-12 form-group">
+                  <a>
+                    Загрузите фотографию вашего профиля
+                  </a>
+                </div>
+                
+                
+                <div class="col-md-12 form-group">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ico"
+                    name="ico"
+                    accept="image/png, image/gif, image/jpeg"
+                    placeholder="Аватарка профиля"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Аватарка профиля'"
+                  />
+                </div>
+                
+                
+                {% comment %} <div class="col-md-12 form-group">
+                  <div class="creat_account">
+                    <input type="checkbox" id="f-option2" name="selector" />
+                    <label for="f-option2">Не выходить из системы</label>
+                  </div>
+                </div> {% endcomment %}
+                <div class="col-md-12 form-group">
+                  <button
+                    type="submit"
+                    value="submit"
+                    class="button button-register w-100"
+                  >
+                    Далее
+                  </button>
+                </div>
+                
+                <div class="col-md-12 form-group">
+                  <button
+                    onclick="document.location='../reg'"
+                    class="button button-register w-100"
+                  >
+                    Назад
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="login_box_img">
+              <div class="hover">
+                <h4>У вас уже есть аккаунт?</h4>
+                <!--<p>0K</p>-->
+                <a class="button button-account" href="../login"
+                  >Войти сейчас</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Login Box Area =================-->
+
+    <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendors/skrollr.min.js' %}"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'vendors/mail-script.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

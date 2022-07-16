@@ -1,0 +1,235 @@
+{% extends "./base_profil.html" %}
+{% load static %}
+
+{% block name %} <img src="{% static uaser.ico %}" alt="Admin" class="rounded-circle" width="150"> <div class="br"></div>{{ uaser.login }} {% endblock %}
+
+{% block status %}
+
+{% if uaser.sopose == "Qr"%}
+<p class="text-secondary mb-1">Статус:</p>
+<p class="text-muted font-size-sm">У меня есть qr код о вакцинации</p>
+{% elif uaser.sopose == "18" %}
+<p class="text-secondary mb-1">Статус:</p>
+<p class="text-muted font-size-sm">Я не привит ведь мне нет 18 лет</p>
+{% elif uaser.sopose == "med" %}
+<p class="text-secondary mb-1">Статус:</p>
+<p class="text-muted font-size-sm">У меня нет qr код о вакцинации но есть медотвод </p>
+{% else %}
+<p class="text-secondary mb-1">Статус:</p>
+<p class="text-muted font-size-sm">Я его пока не заполнил</p>
+{% endif %}
+{% endblock %}
+
+{%block frends%}
+{%if uaser.list_frends != ''%}
+<div class="card mt-2">
+
+    <h6 style="margin-left: auto; margin-right: auto" class="d-flex align-items-center mb-3">Мои друзья - {{frends|length}}</h6>
+    
+    <div class="single-search-product-wrapper">
+            {%for x in frends%}
+            
+                <div class="single-search-product d-flex">
+                  <a href="../prof/{{x.ids}}" ><img src="{% static x.ico %}" alt=""></a>
+                  <div class="desc">
+                   
+                        
+                      <a href="../prof/{{x.ids}}" class="title" style='margin: 10px auto 20px;
+                      display: block;font-size: 150%;'>{{x.login}}</a>
+                      {% comment %} <div class="price">{{ x.ids }}</div>   {% endcomment %}
+                  </div>
+                </div>
+                
+              
+            {%endfor%}
+        </div>
+    
+
+          
+
+          
+
+          
+
+    
+</div> 
+     {%endif%}
+{%endblock%}
+
+{%block frends_cat%}
+{% if isMine %}
+<div class="card mt-2">
+    <h6
+      style="margin-left: auto; margin-right: auto"
+      class="d-flex align-items-center mb-3"
+    >
+    {% comment %} {{frends_new|length}} {% endcomment %}
+      Выгодное предложение для вас и ваших друзей
+    </h6>
+  
+    <div class="single-search-product-wrapper">
+      <a class="title">Вы можите сходить на кино: "{{all_seans.17.name}}"</a>
+      <div style="padding: 10pt">
+          <div style=" width: 100%" class="thumbs">
+              <img src="{% static all_seans.17.img %}" />
+              <div class="caption">
+                  <span class="title">{{ all_seans.17.name }}</span>
+                  {% comment %} <span class="info">{{ x.1 }}</span> {% endcomment %}
+              </div>
+          </div>
+      </div>
+      <a class="title">По цене 150 рубей в среду в кинотеатре Юбилейный </a>
+      {%for x in frends_temp_nado_del_eto_kastil%}
+  
+      <div class="single-search-product d-flex">
+        <a href="#"><img src="{% static x.ico %}" alt="" /></a>
+        <div class="desc">
+          <a href="../prof/{{x.ids}}" class="title">{{x.login}}</a>
+          <div class="dr"></div>
+  
+          {% comment %}
+          <div class="price">{{ x.ids }}</div>
+          {% endcomment %}
+        </div>
+      </div>
+  
+      {%endfor%}
+      <button class="btn btn-info " target="__blank" onclick=" window.location.replace('../', '_blank');">Пригласить друзей</button>
+    </div>
+  </div>
+{%endif%}
+{%endblock%}
+
+{%block frends_new%}
+{%if frends_new|length > 0 and isMine%}
+<div class="card mt-2">
+    <h6 style="margin-left: auto; margin-right: auto" class="d-flex align-items-center mb-3">Запрос в друзья - {{frends_new|length}}</h6>
+    <div class="single-search-product-wrapper">
+            {%for x in frends_new%}
+            
+                <div class="single-search-product d-flex">
+                  <a href="../prof/{{x.ids}}"><img src="{% static x.ico %}" alt=""></a>
+                  <div class="desc">
+                      <a href="../prof/{{x.ids}}" class="title">{{x.login}}</a>
+                      <div class='dr'></div>
+                      <a href="../man_accept/{{x.ids}}" class="title">Принять ✅</a>
+                      <div class='dr'></div>
+                      <a href="../man_noaccept/{{x.ids}}" class="title">Отказать ❌</a>
+                      {% comment %} <div class="price">{{ x.ids }}</div>   {% endcomment %}
+                  </div>
+                </div>
+            {%endfor%}
+        </div>
+</div> 
+{%endif%}
+{%endblock%}
+
+{% block code %}
+{% if not ii.isCode_num %}
+{% if isMine %}
+<div class="card mt-2">
+
+    <h6 style="margin-left: auto; margin-right: auto" class="d-flex align-items-center mb-3">Мой билет на мероприятия:</h6>
+    <div style="padding: 10px; margin-left: auto;margin-right: auto;">
+        <div id="qrCodeOutput"></div>
+    </div>
+
+    <script src="{% static 'js/qr.js' %}"></script>
+    <script src="{% static 'js/baracod.js' %}"></script>
+    <script>
+        let text = '{{ ii.code }}'
+        const el = (selector) => document.querySelector(selector);
+        let qrCodeOutput = el('#qrCodeOutput');
+        qrCodeOutput.append(QRCode.generateHTML(text))
+
+    </script>
+</div>
+{% endif %}
+{% else %}
+
+{% if isMine %}
+{% if ii.info_photo|length > 100 %}
+
+
+<div class="card mt-2">
+    
+    <h6 style="margin-left: auto; margin-right: auto" class="d-flex align-items-center mb-3">Мой пропуск на мероприятия :</h6>
+    
+<div style="overflow: hidden; display: flex; justify-content: center; align-items: center;">
+    
+    <img src="{% static 'img/superanim.gif' %}" width="70%" height="70%" style="overflow: hidden; display: flex; justify-content: center; align-items: center;">
+    
+    </div>
+</div>
+
+
+
+{% else %}
+
+
+<div class="card mt-2">
+    <h6 style="margin-left: auto; margin-right: auto" class="d-flex align-items-center mb-3">Мой код регистрации:</h6>
+
+    <div style="overflow: hidden; display: flex; justify-content: center; align-items: center;">
+        <svg style="min-width: 100%; min-height: 100%; flex-shrink: 0; " id="barcode"></svg>
+    </div>
+    <script src="{% static 'js/qr.js' %}"></script>
+    <script src="{% static 'js/baracod.js' %}"></script>
+    <script>
+        let passwordd = '{{ ii.code }}';
+        JsBarcode("#barcode", passwordd.toString());
+
+    </script>
+</div>
+
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}
+
+
+
+{% block smile %}
+{% if uaser.sopose == "med" %}😎
+{% elif uaser.sopose == "18" %}🔞
+{% elif uaser.sopose == "Qr" %}✅
+{% else %}✍️
+{% endif %}
+{% endblock %}
+
+
+
+{% block add_frend %}
+{% if isMine %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-info " target="__blank" onclick=" window.location.replace('./my_ine/edit', '_blank');">Изменить профиль</button>
+    </div>
+</div>
+{% elif  myFrend%}
+    <p>Ваш друг</p>
+
+{% else %}
+
+<button onclick="document.location='../addfrends/{{prof_id}}'" style="padding: 10pt" class="btn btn-primary">Добавить в друзья</button>
+{% endif %}
+{% endblock %}
+
+
+{% block afiches %}
+
+
+{% for x in seans.seanses.all %}
+<div style="padding: 10pt">
+    <div style=" width: 100%" class="thumbs">
+        <img src="{% static x.img %} "/>
+        <div class="caption">
+            <span class="title">{{ x.name }}</span>
+            {% comment %} <span class="info">{{ x.1 }}</span> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

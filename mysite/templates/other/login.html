@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'img/icons/favicon.ico' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<script>
+    history.pushState(null, null, location.href);
+    window.onpopstate = function(event) {
+        history.go(1);
+    };
+    
+    
+    // Set a Cookie
+    function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+    }
+
+    function button_set_cookie() {
+
+        let email = document.getElementById("emailid").value;
+        let pass = document.getElementById("passid").value;
+
+        if (document.getElementById("emailid").value.indexOf('@') != -1 && document.getElementById("emailid").value.indexOf('.') != -1) {
+            setCookie('user', email + "/" + pass, 30);
+
+
+
+            window.location.replace('./validationalis', '_blank');
+
+        }
+
+    }
+
+</script>
+
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-26">
+                        Вход
+                    </span>
+
+
+                    <form method="post">
+
+
+                        <div class="wrap-input100 validate-input" data-validate="Ошибка: a@b.c">
+                            <input class="input100" type="text" id="emailid" name="email"><!--   id="emailid"    -->
+                            <span class="focus-input100" data-placeholder="Email"></span>
+                        </div>
+
+
+
+                        <div class="wrap-input100 validate-input" data-validate="Поле пустое">
+                            <span class="btn-show-pass">
+                                <i class="zmdi zmdi-eye"></i>
+                            </span>
+                            <input class="input100" id="passid" type="password" name="pass"> <!--   id="passid"    -->
+                            <span class="focus-input100" data-placeholder="Пароль/password"></span>
+                        </div>
+
+
+
+
+
+                        <form method="LINK" action="./login/prof/{{0}}">
+                            <div class="container-login100-form-btn">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+
+                                    <button type="submit" onclick="button_set_cookie()" class="login100-form-btn">
+                                        ВХОД
+                                    </button>
+
+
+
+                                </div>
+                            </div>
+
+
+                        </form>
+
+
+                    </form>
+
+
+                    <div class="text-center p-t-115">
+                        <span class="txt1">
+                            Если нет аккаунта?
+                        </span>
+                        <script>
+                            history.pushState(null, null, location.href);
+                            window.onpopstate = function(event) {
+                                history.go(1);
+                            };
+
+
+                            function removeBack() {
+                                history.pushState(null, null, '');
+                                window.addEventListener('popstate', function() {
+                                    //тут какие то другие действия пишем если надо 
+                                    history.pushState(null, null, '');
+                                });
+                            };
+
+                        </script>
+                        <a class="txt2" href="/reg/">
+                            Зарегистрируйся
+                        </a>
+                    </div>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c" style="margin-bottom: -60pt;">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    
+
+</body>
+
+</html>

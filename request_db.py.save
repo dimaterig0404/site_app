@@ -1,0 +1,12 @@
+>>> from myapp.models import USER
+>>> USER.object.all
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<console>", line 1, in <module>
+AttributeError: type object 'USER' has no attribute 'object'
+print( USER.objects.all())
+
+admin = USER()
+print( USER.objects.all())
+admin.save()

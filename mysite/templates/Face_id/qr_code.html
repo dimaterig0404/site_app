@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Face Id</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'img/icons/favicon.ico' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-26">
+                        Face Id:
+                    </span>
+                    
+                   
+                    {% if status == "Qr" %}
+                     <p style="border-top: 10%">* это биометрические данные вашего лица, + QR-код о вакцинации + штрих код купленного вами билета на почту</p>
+                    {% elif status == "18" %}
+                   <p style="border-top: 10%">* это биометрические данные вашего лица, + информация о том что вам нет 18 лет + штрих код купленного вами билета на почту</p>
+                    {% elif status == "med" %}
+                    <p style="border-top: 10%">* это единый код который включает в себя Q информацию о том что у вас мед отвод + штрих код купленного вами билета</p>
+                    {% edif %}
+
+
+                    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+                    <style>
+                        .example-1 .form-group {
+                            padding: 1em;
+                            margin: 1em;
+                            top: 50%;
+                            left: 50%;
+                            margin-right: -50%;
+                            transform: translate(-20%, 10%)
+                        }
+
+                        .example-1 input[type=file] {
+                            outline: 0;
+                            opacity: 0;
+                            pointer-events: none;
+                            user-select: none;
+                            text-align: center;
+
+                        }
+
+                        .example-1 .label {
+                            width: 120px;
+                            border: 2px dashed grey;
+                            border-radius: 5px;
+                            display: block;
+                            padding: 1.2em;
+                            transition: border 300ms ease;
+                            cursor: pointer;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label i {
+                            display: block;
+                            font-size: 42px;
+                            padding-bottom: 16px;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+
+                            transform: translate(-49%, 0%)
+                        }
+
+                        .example-1 .label i,
+                        .example-1 .label .title {
+                            color: grey;
+                            transition: 200ms color;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label:hover {
+                            border: 2px solid #000;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label:hover i,
+                        .example-1 .label:hover .title {
+                            color: #000
+                        }
+
+                    </style>
+
+
+                    <div style="margin-left:  8%;">
+                        <!--                        <div style="margin: auto;" id="qrCodeOutput"></div>-->
+                        <svg style="margin: auto; align-content: center; " id="barcode"></svg>
+                    </div>
+
+
+                    <!-- Подключаем библиотеку -->
+                    <script src="{% static 'js/qr.js' %}"></script>
+                    <script src="{% static 'js/baracod.js' %}"></script>
+
+                    <script>
+                        let text = Math.floor(Math.random() * (99999999999 - 100000000) + 100000000).toString();
+                        //                        const el = (selector) => document.querySelector(selector) 
+                        //                        let qrCodeOutput = el('#qrCodeOutput');
+                        //                        
+                        //
+                        //
+                        //                        qrCodeOutput.innerHTML = "";
+                        //                        qrCodeOutput.append(QRCode.generateHTML(text, {}))
+
+
+                        JsBarcode("#barcode", text);
+
+
+
+                        function setCookie(cName, cValue, expDays) {
+                            let date = new Date();
+                            date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+                            const expires = "expires=" + date.toUTCString();
+                            document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+                        }
+
+                        function getCookie(cName) {
+                            const name = cName + "=";
+                            const cDecoded = decodeURIComponent(document.cookie); //to be careful
+                            const cArr = cDecoded.split('; ');
+                            let res;
+                            cArr.forEach(val => {
+                                if (val.indexOf(name) === 0) res = val.substring(name.length);
+                            })
+                            return res;
+                        }
+
+
+                        function setingsCookie() {
+                            setCookie('info', getCookie('info') + '/' + text, 1);
+                            alert(document.cookie)
+                            window.location.replace('valid', '_blank');
+                            
+                        }
+
+                    </script>
+
+
+
+
+
+
+
+
+
+
+                    <style>
+                        table {
+
+                            /* Рамка вокруг таблицы */
+                            border-collapse: separate;
+                            /* Способ отображения границы */
+                            width: 100%;
+                            /* Ширина таблицы */
+                            border-spacing: 1px 16px;
+                            /* Расстояние между ячейками */
+                        }
+
+                        td {
+
+                            padding: 5px;
+
+                        }
+
+                    </style>
+                    <table cellpadding="5">
+                        <tr>
+                            <th><img src="{% static 'img/take_fone_plus.png' %}" width="60" height="60"></th>
+                            <td>- Сделайте скриншот экрана и покажите его на кассе </td>
+
+                        </tr>
+                        <tr>
+                            <th><img src="{% static 'img/cassa_pop.png' %}" width="60" height="60"></th>
+                            <td>- На кассе вы получите подробную информацию о завершении регестрации аккаунта</td>
+                        </tr>
+                        <tr>
+
+                            <th><img src="{% static 'img/happy.png' %}" width="60" height="60"></th>
+                            <td>- После этого вам будет доступна функция face id билет </td>
+
+                        </tr>
+                    </table>
+                    <p style="border-top: 10%">*эта манипуляция с показом скриншота делается 1 раз</p>
+
+                    <!--
+                    <img src="images/opencam.gif" style=" margin-bottom: 15pt;margin-left: -40pt;margin-top: 0pt;display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   width: 390px;
+   height: 100px;" alt="" draggable="false">
+-->
+
+
+
+
+
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id="btn" class="login100-form-btn" onclick="setingsCookie()" type="submit">
+                                Finish
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <script>
+                        //alert(document.cookie)
+
+                        history.pushState(null, null, location.href);
+                        window.onpopstate = function(event) {
+                            history.go(1);
+                        };
+
+                        //                        d = document.getElementById("btn")
+                        //                        inputif = document.getElementById("in")
+                        //                        d.style.backgroundColor = "gray";
+                        //
+                        //                        function showFile(input) {
+                        //                            let file = input.files[0];
+                        //
+                        //                            //alert(`File name: ${file.name}`); // например, my.png
+                        //
+                        //
+                        //                            if (file.size > 0) {
+                        //                                d.disabled = false;
+                        //                                d.style.backgroundColor = "";
+                        //                                inputif.style.color = "green";
+                        //				//alert(document.cookie.split("=")[1])
+                        //				
+                        //                                inputif.innerHTML = "Файт загружен"
+                        //                            }
+
+                        //                        }
+
+                    </script>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c" style="margin-bottom: -60pt;">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="dropDownSelect1"></div>
+
+
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+   

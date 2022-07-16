@@ -1,0 +1,4 @@
+git clone --branch=master  https://github.com/dimaterig0404/site_green.git -b master
+mv /home/Toxa4el/site_green/* /home/Toxa4el
+pip3.6 install --user validate_email
+pip3.6 install --user django-grappelli 

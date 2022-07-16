@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProДосуг - Главная</title>
+
+  <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%}">
+  <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css'%}">
+  <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+
+<body>
+  <!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="../"><img src="{%static 'img/logo.png' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+              <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                  <li class="nav-item active"><a class="nav-link" href="../">Главная</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../merop">Все мероприятия</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../users">Пользователи</a></li>
+                  <li class="nav-item submenu dropdown">
+                      <a id='maining' href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                         aria-expanded="false">Профиль</a>
+                      <ul class="dropdown-menu">
+                          <li class="nav-item"><a id ='block1' class="nav-link" href="../login">Вход</a></li>
+                          <li class="nav-item"><a id ='block2' class="nav-link" href="../reg">Регистрация</a></li>
+                          
+                      </ul>
+                  </li>
+                  
+              </ul>
+            
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <script>
+    function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+  
+  if (getCookie('user').indexOf('/') > -1){
+    var maining = document.getElementById("maining");
+    var block1 = document.getElementById("block1");
+    var block2 = document.getElementById("block2");
+    maining.text = 'Аккаунт'
+    block1.text = 'Профиль'
+    block2.text = 'Выход'
+    block1.setAttribute("href", '../prof/my_ine')  ;
+    block2.setAttribute("href", '../logout')  ;
+    
+  }
+  
+  </script>
+
+
+
+  <main class="site-main">
+    
+    <!--================ Hero banner start =================-->
+    <section class="hero-banner">
+      <div class="container">
+        <div class="row no-gutters align-items-center pt-60px">
+          <div class="col-5 d-none d-sm-block">
+            <div class="hero-banner__img">
+              <img class="img-fluid" src="{%static 'img/home/hero-banner.png'%}" alt="" >
+            </div>
+          </div>
+          <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
+            <div class="hero-banner__content">
+              <h4>ProДосуг</h4>
+              <h1>Смотри только интересное</h1>
+              <p>ProДосуг — ваш карманный помощник, который поможет вам интересно провести свое время на мероприятиях интересующие вас!<p>
+              <a class="button button-hero" href="../merop">Посмотреть сейчас!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ Hero banner start =================-->
+
+    <!--================ Hero Carousel start =================-->
+    <section class="section-margin mt-0">
+      <div class="owl-carousel owl-theme hero-carousel">
+        <div class="hero-carousel__slide">
+          <img src="{%static 'img/home/hero-slide1.png'%}" alt="" class="img-fluid">
+          <a href="#" class="hero-carousel__slideOverlay">
+            <h3>Кино</h3>
+           
+          </a>
+        </div>
+        <div class="hero-carousel__slide">
+          <img src="{%static 'img/home/hero-slide2.png'%}" alt="" class="img-fluid">
+          <a href="#" class="hero-carousel__slideOverlay">
+            <h3>Театр</h3>
+            
+          </a>
+        </div>
+        <div class="hero-carousel__slide">
+          <img src="{%static 'img/home/hero-slide3.png'%}" alt="" class="img-fluid">
+          <a href="#" class="hero-carousel__slideOverlay">
+            <h3>Концерт</h3>
+            
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!--================ Hero Carousel end =================-->
+
+    <!-- ================ trending product section start ================= -->  
+    <section class="section-margin calc-60px">
+      <div class="container">
+        <div class="section-intro pb-60px">
+          <!--<p>Popular Item in the market</p>-->
+          <h2>Популярные <span class="section-intro__style">мероприятия</span></h2>
+        </div>
+
+        <div class="row">
+
+          {% for x in seanses %}
+          <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card text-center card-product">
+              <div class="card-product__img">
+                
+                 <p class="card">
+                <img class="card-img" src="{%static x.img %}" alt="">
+                
+                 </p>
+                <ul class="card-product__imgOverlay">
+                  <li>
+                      <button onclick="document.location='../info/{{x.ident_key}}' "><i class="ti-search"></i></button>
+                  </li>
+                  <li>
+                      <button onclick="document.location='../buy/{{x.ident_key}}' "><i class="ti-shopping-cart"></i></button>
+                  </li>
+                  <li>
+                      <button onclick="document.location='../like/{{x.ident_key}}' "><i class="ti-heart"></i></button>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="card-body">
+                
+                <p>{{ x.class_seans_name }}</p>
+                <h4 class="card-product__title"><a href="info/{{x.ident_key}}">{{x.name}}</a></h4>
+                <p class="card-product__price">
+                  {%if x.isPush%}
+                  <img class="seven" title="Оплата по Пушкинской карте " width="40" height="40"src="{%static 'img/isPush.png' %}" alt="">
+                  {{x.summa}} руб.
+                  {%else%}
+                  {{x.summa}} руб.
+                  {%endif%}</p>
+
+                
+              </div>
+              
+            </div>
+
+          </div>
+          {%endfor%}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+     
+
+  </main>
+  
+
+  <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendors/skrollr.min.js' %}"></script>
+  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'vendors/mail-script.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

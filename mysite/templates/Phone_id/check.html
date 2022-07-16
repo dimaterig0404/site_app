@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Vaccination Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'img/icons/favicon.ico' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-26">
+                        Vaccination Info:
+                    </span>
+
+
+
+
+                    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+                    <style>
+                        .example-1 .form-group {
+                            padding: 1em;
+                            margin: 1em;
+                            top: 50%;
+                            left: 50%;
+                            margin-right: -50%;
+                            transform: translate(-20%, 10%)
+                        }
+
+                        .example-1 input[type=file] {
+                            outline: 0;
+                            opacity: 0;
+                            pointer-events: none;
+                            user-select: none;
+                            text-align: center;
+
+                        }
+
+                        .example-1 .label {
+                            width: 120px;
+                            border: 2px dashed grey;
+                            border-radius: 5px;
+                            display: block;
+                            padding: 1.2em;
+                            transition: border 300ms ease;
+                            cursor: pointer;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label i {
+                            display: block;
+                            font-size: 42px;
+                            padding-bottom: 16px;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+
+                            transform: translate(-49%, 0%)
+                        }
+
+                        .example-1 .label i,
+                        .example-1 .label .title {
+                            color: grey;
+                            transition: 200ms color;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label:hover {
+                            border: 2px solid #000;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto
+                        }
+
+                        .example-1 .label:hover i,
+                        .example-1 .label:hover .title {
+                            color: #000
+                        }
+
+                    </style>
+
+
+
+                    <img src="{% static 'img/chose.gif' %}" style=" margin-bottom: 15pt;margin-left: -25pt;margin-top: -10pt;display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   width: 350px;
+   height: 100px;" alt="" draggable="false">
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+
+
+                        <span class="btn-show-pass">
+                            <input class="hide" id="hd-1" type="checkbox">
+                            <label for="hd-1"></label>
+                            <div>
+                                - QR на почту - это способ при котором вам на указаную почту приходит билет.
+
+                                -Зеленый коридор - этот способ обеспечивает быстую привязку билета на ваше лицо.
+                            </div>
+                        </span>
+                        <select id="Select-css" class="select-css" value="0" onchange="next()">
+                            <option value="0">У меня есть QR-код о вакцинации</option>
+                            <option value="1">У меня мед отвод</option>
+                            <option value="2">Мне еще не испольнилось 18 лет</option>
+                        </select>
+
+                    </div>
+
+
+
+
+
+
+                    <div id="con_1">
+
+                        <img src="{% static 'img/qr_pin.gif' %}" style=" margin-bottom: 15pt;margin-left: -25pt;margin-top: -10pt;display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   width: 350px;
+   height: 100px;" alt="" draggable="false">
+                    </div>
+
+                    <div id="con_2">
+
+                        <img src="{% static 'img/lines.png' %}" style="margin-top: -28pt; display: table-cell;
+   vertical-align: centr;
+   text-align: center;
+   width: 250px;
+   height: 60px;
+                                                 margin-left: auto;
+                            margin-right: auto;
+                                                        text-align: center;" alt="" draggable="false">
+                    </div>
+
+
+                    <div id="con_3" class="example-1" style="margin-top: -50pt;">
+                        <div class="form-group">
+                            <label id="bg_in" class="label">
+                                <i class="material-icons">attach_file</i>
+                                <span id="in" class="title">Загрузить файл</span>
+                                <input type="file" accept="image/*" onchange="showFile(this)">
+
+
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id="btn" class="login100-form-btn" onclick="setingsCookie()">
+                                Далее
+                            </button>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c" style="margin-bottom: -60pt;">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'js/canseption.js' %}"></script>
+
+    <script>
+        nenoaac = 'Qr'
+        document.getElementById("btn").style.backgroundColor = "grey";
+        document.getElementById("btn").disabled = true;
+        document.getElementById("con_1").style.visibility = 'visible';
+        document.getElementById("con_2").style.visibility = 'visible';
+        document.getElementById("con_3").style.visibility = 'visible';
+
+
+        nenoaac = 'Qr'
+
+        function next() {
+
+
+            if (document.getElementById("Select-css").value == "0") {
+
+
+                document.getElementById("btn").style.backgroundColor = "grey";
+                document.getElementById("btn").disabled = true;
+                document.getElementById("con_1").style.visibility = 'visible';
+                document.getElementById("con_2").style.visibility = 'visible';
+                document.getElementById("con_3").style.visibility = 'visible';
+
+
+                nenoaac = 'Qr'
+
+
+
+            }
+
+            if (document.getElementById("Select-css").value == "1") {
+
+                document.getElementById("btn").disabled = false;
+                document.getElementById("btn").style.backgroundColor = "";
+
+                document.getElementById("con_1").style.visibility = 'hidden';
+                document.getElementById("con_2").style.visibility = 'hidden';
+                document.getElementById("con_3").style.visibility = 'hidden';
+
+                document.getElementById("in").style.color = "";
+                document.getElementById("in").innerHTML = "Загрузить файл"
+                nenoaac = 'med'
+
+
+            }
+            if (document.getElementById("Select-css").value == "2") {
+                document.getElementById("btn").disabled = false;
+                document.getElementById("btn").style.backgroundColor = "";
+                document.getElementById("con_1").style.visibility = 'hidden';
+                document.getElementById("con_2").style.visibility = 'hidden';
+                document.getElementById("con_3").style.visibility = 'hidden';
+
+                document.getElementById("in").style.color = "";
+                document.getElementById("in").innerHTML = "Загрузить файл"
+                nenoaac = '18'
+
+
+
+            }
+
+
+        }
+
+
+        function setCookie(cName, cValue, expDays) {
+            let date = new Date();
+            date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+        }
+
+        function getCookie(cName) {
+            const name = cName + "=";
+            const cDecoded = decodeURIComponent(document.cookie); //to be careful
+            const cArr = cDecoded.split('; ');
+            let res;
+            cArr.forEach(val => {
+                if (val.indexOf(name) === 0) res = val.substring(name.length);
+            })
+            return res;
+        }
+
+
+        function setingsCookie() {
+            setCookie('info', getCookie('info') + '/' + nenoaac, 1);
+            alert(document.cookie)
+            window.location.replace('./info', '_blank');
+        }
+
+        history.pushState(null, null, location.href);
+        window.onpopstate = function(event) {
+            history.go(1);
+        };
+
+
+
+
+
+        function showFile(input) {
+            let file = input.files[0];
+
+            //alert(`File name: ${file.name}`); // например, my.png
+
+
+            if (file.size > 0) {
+
+                document.getElementById("btn").disabled = false;
+                document.getElementById("btn").style.backgroundColor = "";
+                inputif = document.getElementById("in")
+                inputif.style.color = "green";
+
+                inputif.innerHTML = "Файт загружен"
+
+            }
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/canseption.js' %}"></script>

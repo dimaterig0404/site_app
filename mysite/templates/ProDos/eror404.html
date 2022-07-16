@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProДосуг - Главная</title>
+
+  <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%}">
+  <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css'%}">
+  <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+
+<body>
+  <!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="../"><img src="{%static 'img/logo.png' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+              <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                  <li class="nav-item active"><a class="nav-link" href="../">Главная</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../merop">Все мероприятия</a></li>
+                  
+                  <li class="nav-item submenu dropdown">
+                      <a id='maining' href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                         aria-expanded="false">Профиль</a>
+                      <ul class="dropdown-menu">
+                          <li class="nav-item"><a id ='block1' class="nav-link" href="../login">Вход</a></li>
+                          <li class="nav-item"><a id ='block2' class="nav-link" href="../reg">Регистрация</a></li>
+                          
+                      </ul>
+                  </li>
+                  
+              </ul>
+            
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <script>
+    function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+  
+  if (getCookie('user').indexOf('/') > -1){
+    var maining = document.getElementById("maining");
+    var block1 = document.getElementById("block1");
+    var block2 = document.getElementById("block2");
+    maining.text = 'Аккаунт'
+    block1.text = 'Профиль'
+    block2.text = 'Выход'
+    block1.setAttribute("href", '../prof/my_ine')  ;
+    block2.setAttribute("href", '../logout')  ;
+    
+  }
+  
+  </script>
+
+  
+	<!-- ================ start banner area ================= -->	
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>EROR 404</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">EROR 404</a></li>
+              {% comment %} <li class="breadcrumb-item active" aria-current="page">Order Tracking</li> {% endcomment %}
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+  
+  
+ 
+
+	<script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'vendors/skrollr.min.js' %}"></script>
+	<script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'vendors/mail-script.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

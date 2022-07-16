@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="rn-Ru" class=" js rgba multiplebgs backgroundsize borderradius boxshadow textshadow opacity cssanimations csstransforms csstransforms3d csstransitions fontface js rgba multiplebgs backgroundsize borderradius boxshadow textshadow opacity cssanimations csstransforms csstransforms3d csstransitions fontface" style="height: auto;">
+
+<head>
+
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>catalog</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--    <link rel="shortcut icon" href="file:///C:/Users/Toxa/Desktop/Project(X)/themeforest-11399294-make-multipurpose-onemultipage-theme/common-files/images/favicon.png" type="image/png">-->
+
+    <link rel="stylesheet" href="{% static './css/style.min.css' %}">
+    <link rel="stylesheet" id="scheme-source" href="{% static './css/gray.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+
+    <style id="fit-vids-style">
+        .fluid-width-video-wrapper {
+            width: 100%;
+            position: relative;
+            padding: 0;
+        }
+
+        .fluid-width-video-wrapper iframe,
+        .fluid-width-video-wrapper object,
+        .fluid-width-video-wrapper embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<script>
+    alert(document.cookie)
+    // Set a Cookie
+    function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+    }
+
+    function button_set_cookie() {
+
+
+        setCookie('user', "", 60);
+        setCookie('info', "", 60);
+        setCookie('red', "", 60);
+
+    }
+
+</script>
+
+
+<body>
+
+
+
+
+
+
+
+
+    <div class="loader-overlay loaded">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <div class="topnav fixed-topnav topnav-top transparent">
+        <form action="file:///C:/Users/Toxa/Desktop/Project(X)/themeforest-11399294-make-multipurpose-onemultipage-theme/pages/blog/blog-masonry-3-columns.html#" class="form-search" method="get" role="form">
+            <div class="container">
+                <div class="search-inner clearfix">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search" name="s" class="search-input placeholder" autocomplete="off">
+                    <input type="submit" value="Search">
+                    <div class="search-close">
+                        <a href="file:///C:/Users/Toxa/Desktop/Project(X)/themeforest-11399294-make-multipurpose-onemultipage-theme/pages/blog/blog-masonry-3-columns.html#"><i class="line-icon-close"></i></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+
+    </script>
+
+    <header class="center header-sm bg-dark"  >
+        <div class="container fade-text" style="opacity: 1;">
+
+
+            {% csrf_token %}
+
+            {% if request.COOKIES.user|length > 6  or request.COOKIES.info|length > 20 %}
+            <form method="LINK" action="./login">
+                <input style="float: right;background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 150pt" type="submit" value="Выйти из аккаунта" onclick="button_set_cookie()">
+
+            </form>
+            <form method="LINK" action="./login/prof/my_ine">
+                <input style="float: right;background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 70pt" type="submit" value="Профиль">
+
+            </form>
+
+
+            {% else %}
+
+            <form method="LINK" action="./login">
+                <input style="float: right;background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 70pt" type="submit" value="Вход">
+
+            </form>
+
+
+            <form method="LINK" action="./reg">
+                <input style="float: right;background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 70pt" type="submit" value="Регистрация">
+            </form>
+
+            {% endif %}
+
+
+            <div class="top-text">
+                <h1 class="header-title text-left" style="font-family: Times New Roman ;text-align: center;align-content: center">Афиша Кемерово</h1>
+                <p class="header-message" style="text-align: left;"> Мы работаем чтобы вы отдыхали!</p>
+
+            </div>
+
+        </div>
+    </header>
+
+    <section class="section-blog blog-list blog-grid clearfix bg-gray-light" style="opacity: 1;">
+
+
+
+
+
+
+
+        <div class="container">
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    <div class="row blog-masonry clearfix" style="position: relative; height: 1526.59px;">
+                        <div class="col-md-4 col-sm-6" style="position: absolute; left: 0px; top: 0px;">
+                            {% for x in catalog.0 %}
+                           
+                            <div class="post">
+                                <div class="post-thumbnail">
+                                    <figure>
+                                        <img src="{% static x.img %}" alt="ZeleniyKoridor">
+                                    </figure>
+                                </div>
+                                <div class="post-text">
+                                    <h2 class="post-title"><a style="color: red">{{ x.name }}</a></h2>
+
+                                    <div class="post-excerpt">
+                                        <p>{{ x.discription }}</p>
+                                    </div>
+                                    <div class="post-more">
+                                        <form action="login/buy/{{x.ident_key}}" target="_blank">
+                                        <button  style="background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 50pt">BUY</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {% endfor %}
+                            
+                            
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-6" style="position: absolute; left: 390px; top: 0px;">
+                           {% for x in catalog.1 %}
+                           
+                           
+                            <div class="post">
+                                <div class="post-thumbnail">
+                                    <figure>
+                                        <img src="{% static x.img %}" alt="ZeleniyKoridor">
+                                    </figure>
+                                </div>
+                                <div class="post-text">
+                                    <h2 class="post-title"><a style="color: red">{{ x.name }}</a></h2>
+
+                                    <div class="post-excerpt">
+                                        <p>{{ x.discription }}</p>
+                                    </div>
+                                    <div class="post-more">
+                                        <form action="login/buy/{{x.ident_key}}" target="_blank">
+                                        <button  style="background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 50pt">BUY</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            {% endfor %}
+                            
+
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-6" style="position: absolute; left: 780px; top: 0px;">
+                            {% for x in catalog.2 %}
+                            
+                            
+                            <div class="post">
+                                <div class="post-thumbnail">
+                                    <figure>
+                                        <img src="{% static x.img %}" alt="ZeleniyKoridor">
+                                    </figure>
+                                </div>
+                                <div class="post-text">
+                                    <h2 class="post-title"><a style="color: red">{{ x.name }}</a></h2>
+
+                                    <div class="post-excerpt">
+                                        <p>{{ x.discription }}</p>
+                                    </div>
+                                    <div class="post-more">
+                                        <form action="login/buy/{{x.ident_key}}" target="_blank">
+                                        <button  style="background-color: rgb(50, 50, 50); color: white; border-radius: 10px; width: 50pt">BUY</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                           {% endfor %}
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function(event) {
+            history.go(1);
+        };
+
+    </script>
+    <script src="{% static './js/jquery-1.11.1.min.js.Без названия '%}"></script>
+    <script src="{% static './js/bootstrap.min.js.Без названия' %}"></script>
+    <script src="{% static './js/modernizr.js.Без названия' %}"></script>
+    <script src="{% static './js/retina.min.js.Без названия' %}"></script>
+    
+
+
+    
+    <script src="{% static './js/jquery.fitvids.js.Без названия' %}"></script>
+    <script src="{% static './js/isotope.pkgd.min.js.Без названия' %}"></script>
+
+    <script src="{% static './js/application.js.Без названия' %}"></script>
+
+
+</body>
+
+
+
+</html>

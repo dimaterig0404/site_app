@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProДосуг - Поиск друзей</title>
+   
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%}">
+        <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css'%}">
+        <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+        <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+	    <link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet/less" type="text/css" href="css/main.scss" />
+
+</head>
+<body>
+    <!--================ Start Header Menu Area =================-->
+      <header class="header_area">
+      <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand logo_h" href="../"><img src="{%static 'img/logo.png' %}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="../">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../merop">Все мероприятия</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="../users">Пользователи</a></li>
+                    
+                    <li class="nav-item submenu dropdown">
+                        <a id='maining' href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Профиль</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a id ='block1' class="nav-link" href="../login">Вход</a></li>
+                            <li class="nav-item"><a id ='block2' class="nav-link" href="../reg">Регистрация</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  
+  
+  
+    <script>
+      function getCookie(name) {
+      let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    
+    if (getCookie('user').indexOf('/') > -1){
+      var maining = document.getElementById("maining");
+      var block1 = document.getElementById("block1");
+      var block2 = document.getElementById("block2");
+      maining.text = 'Аккаунт'
+      block1.text = 'Профиль'
+      block2.text = 'Выход'
+      block1.setAttribute("href", '../prof/my_ine')  ;
+      block2.setAttribute("href", '../logout')  ;
+      
+    }
+    
+    </script>
+    <!--================ End Header Menu Area =================-->
+
+    <!-- ================ start banner area ================= -->
+    <section class="blog-banner-area" id="category">
+        <div class="container h-100">
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>Поиск друзей</h1>
+                    <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../">Главная</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Поиск друзей</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ end banner area ================= -->
+
+    <section class="section-margin--small mb-5">
+        <div class="container">
+          <div class="row">
+            
+            
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div>
+                    <div class="input-group filter-bar-search">
+                        <input type="text" placeholder="Поиск">
+                        <div class="input-group-append">
+                            <button type="button"><i class="ti-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+              <div class="sidebar-categories">
+                <div class="br"></div>
+                <div class="head">По мероприятию</div>
+                <ul class="main-categories">
+                  <li class="common-filter">
+                    <form action="#">
+                      <ul>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Все</label></li>
+                        {%for x in list_cat_users%}
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">{{x}}</label></li>
+                        {%endfor%}
+                        {% comment %} <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li> {% endcomment %}
+                      </ul>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+              <div class="sidebar-filter">
+                <div class="top-filter-head">Общая информация</div>
+                <div class="common-filter">
+                  <div class="head">Пол</div>
+                  <form action="#">
+                    <ul>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Любой</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Мужчина</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Женьшина</label></li>
+                    </ul>
+                  </form>
+                </div>
+                <div class="common-filter">
+                  <div class="head">Возраст</div>
+                  <form action="#">
+                    <ul>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Любой</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="mini" name="brand"><label for="mini">0+</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="+6" name="brand"><label for="+6">6+</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="+12" name="brand"><label for="+12">12+</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="+16" name="brand"><label for="+16">16+</label></li>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="+18" name="brand"><label for="+18">18+</label></li>
+                      
+                    </ul>
+                  </form>
+                </div>
+                <div class="common-filter">
+                  <div class="head">Город</div>
+                  <form action="#">
+                    <ul>
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Любой</label></li>
+                      {%for city in citiz %}
+                      <li class="filter-list"><input class="pixel-radio" type="radio" id="mini" name="brand"><label for="mini">{{city}}</label></li>
+                      {%endfor%}
+                      
+                    </ul>
+                  </form>
+                </div> 
+             
+            </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+
+
+                <!-- Start Filter Bar -->
+                <div class="filter-bar d-flex flex-wrap align-items-center">
+                    {% comment %} <div class="sorting">
+                        <select>
+                            <option value="0">Все</option>
+                            <option value="1">Кино</option>
+                            <option value="2">Театр</option>
+                            <option value="3">Концерт</option>
+                        </select>
+                    </div> 
+                    <div class="sorting mr-auto">
+                        <select>
+                            <option value="0">Все</option>
+                            <option value="1">0+</option>
+                            <option value="2">6+</option>
+                            <option value="3">12+</option>
+                            <option value="4">16+</option>
+                            <option value="5">18+</option>
+                        </select>
+                    </div>{% endcomment %}
+                    
+                </div>
+                <!-- End Filter Bar -->
+
+                    <!-- Start Best Seller -->
+                    <section class="lattest-product-area pb-40 category-list">
+                        <div class="row">
+                            
+                            {%for x in user%}
+                            <div class="col-xs-6 col-sm-3">
+                                <div class="card text-center card-product">
+                                    <div class="card-product__img" >
+                                      <a href="../prof/{{forloop.counter|add:'-1'}}"><img class="card-img" style='width: 100px; height: 100px; '  src="{% static x.ico %}" alt=""> </a>
+                                       {% comment %}  <ul class="card-product__imgOverlay">
+                                            <li>
+                                                <button onclick="document.location='../info/{{x.ident_key}}' "><i class="ti-search"></i></button>
+                                            </li>
+                                            <li>
+                                                <button onclick="document.location='../buy/{{x.ident_key}}' "><i class="ti-shopping-cart"></i></button>
+                                            </li>
+                                            <li>
+                                                <button onclick="document.location='../like/{{x.class_seans}}' "><i class="ti-heart"></i></button>
+                                            </li>
+                                        </ul>{% endcomment %}
+                                    </div>
+                                    <div class="card-body">
+                                        {% comment %} <p>{{x.login}}</p> {% endcomment %}
+                                         <h4 class="card-product__title"><a href="../prof/{{forloop.counter|add:'-1'}}">{{x.login}}</a></h4>
+                                        {% comment %} <p class="card-product__price">{{x.ico}} руб.</p>  {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                            {%endfor%}
+                                
+                            
+                            
+                        </div>
+                    </section>
+                    {% comment %} <div class="btn-blue-tr"> {% endcomment %}
+                    <button id="gok"  style="width: 100%;text-align: center;">ЕщЁ...</button> 
+                    {% comment %} </div> {% endcomment %}
+                    <!-- End Best Seller -->
+                </div>
+            </div>
+        </div>
+    </section>
+     <script>
+        window.onload = function () {
+            var box=document.getElementsByClassName('col-md-6 col-lg-4');
+            var btn=document.getElementById('gok');
+            for (let i=10;i<box.length;i++) {
+                box[i].style.display = "none";
+            }
+    
+            var countD = 10;
+            btn.addEventListener("click", function() {
+                var box=document.getElementsByClassName('col-md-6 col-lg-4');
+                countD += 10;
+                if (countD <= box.length){
+                    for(let i=0;i<countD;i++){
+                        box[i].style.display = "block";
+                    }
+                }
+    
+            })
+        }
+     </script>
+
+     <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+     <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'vendors/skrollr.min.js' %}"></script>
+     <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+     <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+     <script src="{% static 'vendors/mail-script.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

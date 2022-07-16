@@ -1,0 +1,12 @@
+<script>
+    function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+    }
+    alert('{{name}}'+'/'+'{{pass}}'+'/'+'{{id}}')
+    setCookie('user', '{{name}}'+'/'+'{{pass}}'+'/'+'{{id}}', 60);
+    setCookie('info','', 30);
+    window.location.replace('../', '_blank');
+</script>

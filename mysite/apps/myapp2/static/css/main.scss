@@ -1,0 +1,98 @@
+
+.btn-red-tr, .btn-green-tr, .btn-blue-tr {
+  min-width: 130px;
+  position: relative;
+  display: inline-block;
+
+  text-align: center;
+  text-transform: uppercase; 
+
+  padding: 15px;
+  margin: 30px 25px;
+
+  font-size: $font-size + 40%;
+  font-weight: 600;
+
+  color: $color-text;
+
+  transition: 0.5s;
+}
+
+.btn-red-tr { background-color: $color-button-red; }
+.btn-green-tr { background-color: $color-button-green; }
+.btn-blue-tr { background-color: $color-button-blue; }
+
+.btn-red-tr:before {
+  position: absolute;
+  content:"";
+  border-top: 5px solid lighten($color-button-red, 5%);
+  border-left: 5px solid lighten($color-button-red, 5%);  
+  border-right: 5px solid darken($color-button-red, 5%);
+  border-bottom: 5px solid darken($color-button-red, 5%);
+
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;  
+
+  transition: 0.5s;
+
+}
+
+.btn-green-tr:before {
+  position: absolute;
+  content:"";
+  border-top: 5px solid lighten($color-button-green, 5%);
+  border-left: 5px solid lighten($color-button-green, 5%);  
+  border-right: 5px solid darken($color-button-green, 5%);
+  border-bottom: 5px solid darken($color-button-green, 5%);
+
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;  
+
+  transition: 0.5s;
+
+}
+
+.btn-blue-tr:before {
+  position: absolute;
+  content:"";
+  border-top: 5px solid lighten($color-button-blue, 5%);
+  border-left: 5px solid lighten($color-button-blue, 5%); 
+  border-right: 5px solid darken($color-button-blue, 5%);
+  border-bottom: 5px solid darken($color-button-blue, 5%);
+
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;  
+
+  transition: 0.5s;
+
+}
+
+.btn-red-tr:hover {
+  box-shadow: 7px 7px darken($color-button-red, 20%), -7px -7px lighten($color-button-red, 20%);
+  cursor: pointer;
+    &::before {
+    border: 0px ;
+  }
+}
+
+.btn-green-tr:hover {
+  box-shadow: 7px 7px darken($color-button-green, 20%), -7px -7px lighten($color-button-green, 20%);
+  cursor: pointer;
+    &::before {
+    border: 0px ;
+  }
+}
+
+.btn-blue-tr:hover {
+  box-shadow: 7px 7px darken($color-button-blue, 20%), -7px -7px lighten($color-button-blue, 20%);
+  cursor: pointer;
+  &::before {
+    border: 0px ;
+  }
+}

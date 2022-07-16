@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProДосуг - {{name_main}}</title>
+   
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%}">
+        <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css'%}">
+        <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+        <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+	    <link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet/less" type="text/css" href="css/main.scss" />
+
+</head>
+<body>
+    <!--================ Start Header Menu Area =================-->
+      <header class="header_area">
+      <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand logo_h" href="../"><img src="{%static 'img/logo.png' %}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="../">Главная</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="../merop">МероприятиЯ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../users">Пользователи</a></li>
+                    
+                    <li class="nav-item submenu dropdown">
+                        <a id='maining' href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Профиль</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a id ='block1' class="nav-link" href="../login">Вход</a></li>
+                            <li class="nav-item"><a id ='block2' class="nav-link" href="../reg">Регистрация</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  
+  
+  
+    <script>
+      function getCookie(name) {
+      let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    
+    if (getCookie('user').indexOf('/') > -1){
+      var maining = document.getElementById("maining");
+      var block1 = document.getElementById("block1");
+      var block2 = document.getElementById("block2");
+      maining.text = 'Аккаунт'
+      block1.text = 'Профиль'
+      block2.text = 'Выход'
+      block1.setAttribute("href", '../prof/my_ine')  ;
+      block2.setAttribute("href", '../logout')  ;
+      
+    }
+    
+    </script>
+    <!--================ End Header Menu Area =================-->
+
+    <!-- ================ start banner area ================= -->
+    <section class="blog-banner-area" id="category">
+        <div class="container h-100">
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>{{name_main}}</h1>
+                    <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../">Главная</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{name_main}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ end banner area ================= -->
+
+
+
+  <!--================Blog Categorie Area =================-->
+  <section class="blog_categorie_area">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="categories_post">
+                <img class="card-img rounded-0" src="{%static 'img/home/hero-slide1.png'%}"alt="кино">
+                <div class="categories_details">
+                    <div class="categories_text">
+                        <a href="single-blog.html">
+                            <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Кино</font></font></h5>
+                        </a>
+                        <div class="border_line"></div>
+                        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Смотри</font></font></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="categories_post">
+            <img class="card-img rounded-0" src="{%static 'img/home/hero-slide2.png'%}" alt="театр">
+            <div class="categories_details">
+              <div class="categories_text">
+                <a href="single-blog.html">
+                    <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Театр</font></font></h5>
+                </a>
+                <div class="border_line"></div>
+                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Наслаждайся</font></font></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="categories_post">
+                <img class="card-img rounded-0" src="{%static 'img/home/hero-slide3.png'%}" alt="почта">
+                <div class="categories_details">
+                    <div class="categories_text">
+                        <a href="single-blog.html">
+                            <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Концерт</font></font></h5>
+                        </a>
+                        <div class="border_line"></div>
+                        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подпевай</font></font></p>
+                    </div>
+                </div>
+            </div>
+        
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================Blog Categorie Area =================-->
+  <div class="section-intro pb-60px">
+    <!--<p>Popular Item in the market</p>-->
+    <h2>    Список <span class="section-intro__style">мероприятий</span></h2>
+  </div>
+  <!--================Blog Area =================-->
+  <section class="blog_area">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8">
+                  <div class="blog_left_sidebar">
+                      
+                      
+                      
+                      
+                      
+                      <article class="row blog_item">
+                          
+                          <div class="col-md-12">
+                            <div class="row">
+                                {%if seanses|length > 0%}
+
+                                {% for x in seanses %}
+                                <div class="col-md-4 col-lg-4">
+                                  <div class="card text-center card-product">
+                                    <div class="card-product__img">
+                                      <img class="card-img" src="{%static x.img %}" alt="">
+                                      <ul class="card-product__imgOverlay">
+                                        <li>
+                                            <button onclick="document.location='../info/{{x.ident_key}}' "><i class="ti-info"></i></button>
+                                        </li>
+                                        <li>
+                                            <button onclick="document.location='../buy/{{x.ident_key}}' "><i class="ti-shopping-cart"></i></button>
+                                        </li>
+                                        <li>
+                                            <button onclick="document.location='../like/{{x.ident_key}}' "><i class="ti-heart"></i></button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="card-body">
+                                      <p>{{ x.class_seans_name }}</p>
+                                      <h4 class="card-product__title"><a href="info/{{x.ident_key}}">{{x.name}}</a></h4>
+                                      <p class="card-product__price">
+                                      {%if x.isPush%}
+                                        <img class="seven" title="Оплата по Пушкинской карте " width="40" height="40"src="{%static 'img/isPush.png' %}" alt="">
+                                        {{x.summa}} руб.
+                                      {%else%}
+                                        {{x.summa}} руб.
+                                      {%endif%}</p>
+                                    </div>
+                                    
+                                  </div>
+                      
+                                </div>
+
+                                
+                                
+                                {%endfor%}
+                                
+                                {%elif seanses|length == 0 %}
+                                
+                                    <div class="card text-center card-product">
+                                      
+                                       <h1 >🤨Ничего не найденно😥</h1>
+
+                                      
+                                      
+                                      
+                                    </div>
+                        
+                                  
+                                {%endif%}
+                      
+                                  </div>
+                                </div>
+                              </div>
+                            
+                            
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="blog_right_sidebar">
+                                    <aside class="single_sidebar_widget search_widget">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Поиск мероприятий">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="lnr lnr-magnifier"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+              
+                                        <!-- /input-group -->
+                                        <div class="br"></div>
+                                    </aside>
+                                   
+              
+              
+                                    {% comment %} <aside class="single_sidebar_widget popular_post_widget">
+                                        <h3 class="widget_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Популярные мероприятия</font></font></h3>
+              
+                                        <div class="media post_item">
+                                            <img src="{% static 'img/blog/popular-post/post1.jpg'%}" alt="почта">
+                                            <div class="media-body">
+                                                <a href="single-blog.html">
+                                                    <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Космос Последний рубеж</font></font></h3>
+                                                </a>
+                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">02 часа назад</font></font></p>
+                                            </div>
+                                        </div>
+              
+                                        <div class="media post_item">
+                                            <img src="{% static 'img/blog/popular-post/post2.jpg'%}" alt="почта">
+                                            <div class="media-body">
+                                                <a href="single-blog.html">
+                                                    <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Удивительный Хаббл</font></font></h3>
+                                                </a>
+                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">02 часа назад</font></font></p>
+                                            </div>
+                                        </div>
+              
+                                        <div class="media post_item">
+                                            <img src="{% static 'img/blog/popular-post/post3.jpg'%}" alt="почта">
+                                            <div class="media-body">
+                                                <a href="single-blog.html">
+                                                    <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Астрономия или астрология</font></font></h3>
+                                                </a>
+                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">03 часа назад</font></font></p>
+                                            </div>
+                                        </div>
+              
+                                        <div class="media post_item">
+                                            <img src="{% static 'img/blog/popular-post/post4.jpg'%}" alt="почта">
+                                            <div class="media-body">
+                                                <a href="single-blog.html">
+                                                    <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Телескоп астероидов</font></font></h3>
+                                                </a>
+                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">01 час назад</font></font></p>
+                                            </div>
+                                        </div>
+              
+                                        <div class="br"></div>
+                                    </aside>{% endcomment %}
+              
+              
+              
+                                    <aside class="single_sidebar_widget post_category_widget">
+                                        <h4 class="widget_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Категории мероприятий</font></font></h4>
+                                        <ul class="list cat-list">
+                                            <li>
+                                                <a href="../merop" class="d-flex justify-content-between">
+                                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Все</font></font></p>
+                                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">></font></font></p>
+                                                </a>
+                                            </li>
+                                            {% for x in catt_all %}
+                                            <li>
+                                                <a href="../merop/{{x.1}}" class="d-flex justify-content-between">
+                                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.1}}</font></font></p>
+                                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">></font></font></p>
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <div class="br"></div>
+                                    </aside>
+                                    
+                                    <aside class="single-sidebar-widget tag_cloud_widget">
+                                        <h4 class="widget_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Готовые подборки мероприятий</font></font></h4>
+                                        <ul class="list">
+                                            {% for x in tegs %}
+                                            <li>
+                                                <a href="../events/{{x.name}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.name}}</font></font></a>
+                                            </li>
+                                            {%endfor%}
+                                        </ul>
+                                    </aside>
+                                </div>
+                            </div>
+                            </div>
+                      </article>
+                   
+                      
+                      
+                      
+                      
+                      <nav class="blog-pagination justify-content-center d-flex">
+                          <ul class="pagination">
+                              
+                              <li class="page-item">
+                                  <a href="#" class="page-link" aria-label="Предыдущий">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-left"></span>
+                                      </span>
+                                  </a>
+                              </li>
+                              {%for x in range%}
+                            {%if x|add:'+1' == page or seanses|length <= 10%}
+                              <li class="page-item active">
+                                  <a href="/page/{{x|add:'+1'}}" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x|add:'+1'}} </font></font></a>
+                              </li>
+                              {%else%}
+                              <li class="page-item ">
+                                <a href="/page/{{x|add:'+1'}}" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x|add:'+1'}} </font></font></a>
+                            </li>
+                              {% endif %}
+                              {%endfor%}
+                              {% comment %} <li class="page-item">
+                                  <a href="#" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">02</font></font></a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">03</font></font></a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">04</font></font></a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">09</font></font></a>
+                              </li> {% endcomment %}
+                              
+                              <li class="page-item">
+                                  <a href="#" class="page-link" aria-label="Следующий">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-right"></span>
+                                      </span>
+                                  </a>
+                              </li>
+                              
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+             
+          </div>
+      </div>
+  </section>
+  <!--================Blog Area =================-->
+
+
+
+  <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendors/skrollr.min.js' %}"></script>
+  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'vendors/mail-script.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
